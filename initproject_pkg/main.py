@@ -123,7 +123,7 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
     lines.append('\tlong_description=long_description,')
     lines.append('\tlong_description_content_type="text/markdown",')
     lines.append('\turl="https://github.com/' + devname + '/' + launch_name + '",')
-    lines.append('\tpackages=setuptools.findpackages(),')
+    lines.append('\tpackages=setuptools.find_packages(),')
     lines.append(')')
     lines.append('')
     savelines(root_path + '/' + 'setup.py', lines)
