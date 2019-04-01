@@ -14,7 +14,8 @@ INITPROJECT
 		
 				python setup.py install
 			
-		3.	Copy 'initproject' from 'bin' folder to '/usr/local/bin:
+		3.	Copy 'initproject' from 'bin' folder to '/usr/local/bin
+			(you probably will need to use sudo):
 		
 				cp bin/initproject /usr/local/bin
 			
