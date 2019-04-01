@@ -106,6 +106,28 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
     lines.append('' + '\n')
     savelines(root_path + '/' + 'LICENSE', lines)
 
+    # setup.py
+    lines = []
+    lines.append('import setuptools' + '\n')
+    lines.append('import os' + '\n')
+    lines.append('' + '\n')
+    lines.append('with open("README.md", "r") as fh:' + '\n')
+    lines.append('\tlong_description = fh.read()' + '\n')
+    lines.append('' + '\n')
+    lines.append('setuptools.setup(' + '\n')
+    lines.append('\tname="' + launch_name + '",' + '\n')
+    lines.append('\tversion="0.0.1",' + '\n')
+    lines.append('\tauthor="' + devnname + '",' + '\n')
+    lines.append('\tauthor_email="' + devemail + '",' + '\n')
+    lines.append('\tdescription="Project description here",' + '\n')
+    lines.append('\tlong_description=long_description,' + '\n')
+    lines.append('\tlong_description_content_type="text/markdown",' + '\n')
+    lines.append('\turl="https://github.com/' + devname + '/' + launch_name + '",' + '\n')
+    lines.append('\tpackages=setuptools.findpackages(),' + '\n')
+    lines.append(')' + '\n')
+    lines.append('')
+    savelines(root_path + '/' + 'setup.py', lines)
+
 
 def print_success(proj_name):
     print('\nInitialized "' + proj_name.title() + '" successfully.\nThanks for using Initproject!\n\n')
