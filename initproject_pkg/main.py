@@ -70,6 +70,7 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
 
     root_path = current_dir + '/' + root_name
     pkg_path = root_path + '/' + pkg_name
+    bin_path = root_path + '/' + 'bin'
 
     # Launcher
     lines = []
@@ -79,7 +80,7 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
     lines.append('if __name__ == "__main__":')
     lines.append('\t' + pkg_name + '.main.main()')
     lines.append('')
-    savelines(root_path + '/' + launch_name + '.py', lines)
+    savelines(bin_path + '/' + launch_name + '.py', lines)
 
     # pkg init
     lines = ['name = "' + pkg_name + '"']
