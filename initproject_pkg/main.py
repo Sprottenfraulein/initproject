@@ -32,7 +32,7 @@ def loadlines(filename, numbers):
     with file_credits:
         for i, line in enumerate(file_credits):
             if i + 1 in numbers:
-                lines.append(line)
+                lines.append(line.replace('\n', '').replace('\r', ''))
     while len(lines) < len(numbers):
         lines.append('')
     return lines
@@ -45,7 +45,7 @@ def savelines(filename, lines):
         quit_app()
     with file_credits:
         for line in lines:
-            file_credits.write(line)
+            file_credits.write(line + '\n')
 
 
 def get_credits():
@@ -54,9 +54,9 @@ def get_credits():
     if dev_credits == None or sysinterface.cmdflag in ('-n','--new-author'):
         dev_credits = ['','']
     while dev_credits[0] == '':
-        dev_credits[0] = input('Please, enter your name: ') + '\n'
+        dev_credits[0] = input('Please, enter your name: ')
     while dev_credits[1] == '':
-        dev_credits[1] = input('Please, enter your email: ') + '\n'
+        dev_credits[1] = input('Please, enter your email: ')
     savelines(filename_credits, dev_credits)
     return dev_credits
 
@@ -73,58 +73,58 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
 
     # Launcher
     lines = []
-    lines.append('# Starting script, imports and calls the main function from the app module.' + '\n')
-    lines.append('import ' + pkg_name + '.main' + '\n')
-    lines.append('' + '\n')
-    lines.append('if __name__ == "__main__":' + '\n')
-    lines.append('\t' + pkg_name + '.main.main()' + '\n')
-    lines.append('' + '\n')
+    lines.append('# Starting script, imports and calls the main function from the app module.')
+    lines.append('import ' + pkg_name + '.main')
+    lines.append('')
+    lines.append('if __name__ == "__main__":')
+    lines.append('\t' + pkg_name + '.main.main()')
+    lines.append('')
     savelines(root_path + '/' + launch_name + '.py', lines)
 
     # pkg init
-    lines = ['name = "' + pkg_name + '"' + '\n']
-    lines.append('' + '\n')
+    lines = ['name = "' + pkg_name + '"']
+    lines.append('')
     savelines(pkg_path + '/' + '__init__' + '.py', lines)
 
     # pkg Main.py
-    lines = ['# Main script module.' + '\n']
-    lines.append('' + '\n')
+    lines = ['# Main script module.']
+    lines.append('')
     savelines(pkg_path + '/' + 'main' + '.py', lines)
 
     # AUTHORS
-    lines = [devname + '\n', devemail + '\n']
-    lines.append('' + '\n')
+    lines = [devname, devemail]
+    lines.append('')
     savelines(root_path + '/' + 'AUTHORS', lines)
 
     # README.md
-    lines = ['# README.md of your project. Consists of description, installation and usage tips, troubleshooting, etc.' + '\n']
-    lines.append('' + '\n')
+    lines = ['# README.md of your project. Consists of description, installation and usage tips, troubleshooting, etc.']
+    lines.append('')
     savelines(root_path + '/' + 'README.md', lines)
 
     # LICENSE
-    lines = ['# Copy the text of your license of choice here.' + '\n']
-    lines.append('' + '\n')
+    lines = ['# Copy the text of your license of choice here.']
+    lines.append('')
     savelines(root_path + '/' + 'LICENSE', lines)
 
     # setup.py
     lines = []
-    lines.append('import setuptools' + '\n')
-    lines.append('import os' + '\n')
-    lines.append('' + '\n')
-    lines.append('with open("README.md", "r") as fh:' + '\n')
-    lines.append('\tlong_description = fh.read()' + '\n')
-    lines.append('' + '\n')
-    lines.append('setuptools.setup(' + '\n')
-    lines.append('\tname="' + launch_name + '",' + '\n')
-    lines.append('\tversion="0.0.1",' + '\n')
-    lines.append('\tauthor="' + devname + '",' + '\n')
-    lines.append('\tauthor_email="' + devemail + '",' + '\n')
-    lines.append('\tdescription="Project description here",' + '\n')
-    lines.append('\tlong_description=long_description,' + '\n')
-    lines.append('\tlong_description_content_type="text/markdown",' + '\n')
-    lines.append('\turl="https://github.com/' + devname + '/' + launch_name + '",' + '\n')
-    lines.append('\tpackages=setuptools.findpackages(),' + '\n')
-    lines.append(')' + '\n')
+    lines.append('import setuptools')
+    lines.append('import os')
+    lines.append('')
+    lines.append('with open("README.md", "r") as fh:')
+    lines.append('\tlong_description = fh.read()')
+    lines.append('')
+    lines.append('setuptools.setup(')
+    lines.append('\tname="' + launch_name + '",')
+    lines.append('\tversion="0.0.1",')
+    lines.append('\tauthor="' + devname + '",')
+    lines.append('\tauthor_email="' + devemail + '",')
+    lines.append('\tdescription="Project description here",')
+    lines.append('\tlong_description=long_description,')
+    lines.append('\tlong_description_content_type="text/markdown",')
+    lines.append('\turl="https://github.com/' + devname + '/' + launch_name + '",')
+    lines.append('\tpackages=setuptools.findpackages(),')
+    lines.append(')')
     lines.append('')
     savelines(root_path + '/' + 'setup.py', lines)
 
