@@ -67,6 +67,7 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
     launch_name = proj_name.lower()
 
     sysinterface.createpath((root_name, pkg_name, 'test'))
+    sysinterface.createpath((root_name, 'bin'))
 
     root_path = current_dir + '/' + root_name
     pkg_path = root_path + '/' + pkg_name
