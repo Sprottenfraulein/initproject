@@ -117,7 +117,7 @@ def makestructure(ROOT_DIR, current_dir, proj_name, devname, devemail):
     lines.append('setuptools.setup(' + '\n')
     lines.append('\tname="' + launch_name + '",' + '\n')
     lines.append('\tversion="0.0.1",' + '\n')
-    lines.append('\tauthor="' + devnname + '",' + '\n')
+    lines.append('\tauthor="' + devname + '",' + '\n')
     lines.append('\tauthor_email="' + devemail + '",' + '\n')
     lines.append('\tdescription="Project description here",' + '\n')
     lines.append('\tlong_description=long_description,' + '\n')
