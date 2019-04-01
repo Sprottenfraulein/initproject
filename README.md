@@ -12,7 +12,7 @@ INITPROJECT
 			(where this README.md file is located)
 		2.	Run the following command:
 		
-				python setup.py install
+				python3 setup.py install
 			
 		3.	Copy 'initproject' from 'bin' folder to '/usr/local/bin
 			(you probably will need to use sudo):
