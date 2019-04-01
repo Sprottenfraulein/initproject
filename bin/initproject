@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+# Starting script, imports and calls the main function from the app module.
+
+import initproject_pkg.main
+
+if __name__ == '__main__':
+    initproject_pkg.main.main()
